@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '../../public/vite.svg'
-import '../styles/modules/App.css'
+import { useState } from "react";
+import "../styles/modules/App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+      <h1>Jammming</h1>
+      <p>SearchBar Placeholder</p>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <section style={{ border: "1px solid", marginBottom: 8 }}>
+          <h2>New albums</h2>
+          <p>view all</p>
+        </section>
+        <section
+          className="imgCarousel"
+          style={{ border: "1px solid", marginBottom: 8 }}
+        >
+          <div>
+            <p>Song name</p>
+            <p>artist Name</p>
+          </div>
+        </section>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div style={{ border: "2px solid blue" }}>
+        <h2>Recently played</h2>
+        <ol style={{ border: "1px solid" }}>
+          <li className="useGridLayoutForChildren li-MustBeRepeatedForDataset">
+            <img src="#" alt="album img" />
+            <p>Song name</p>
+            <p>artist</p>
+            <button>Add to Fav</button>
+            <button>. . .</button>
+          </li>
+        </ol>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <nav>
+        <button>Home</button>
+        <button>Explore</button>
+        <button>Profile</button>
+      </nav>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
