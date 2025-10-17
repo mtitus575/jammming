@@ -1,3 +1,6 @@
+ul {
+  padding: 0;
+}
 .resultsCtn {
   box-sizing: border-box;
   width: 100%;
@@ -22,6 +25,14 @@
 .resultData {
   display: flex;
   align-items: center;
+}
+
+.resultData:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--clr-surface-a5);
+  zoom: 101%;
 }
 
 .albumImgCtn {
@@ -53,4 +64,8 @@
 
 .addToFavBtn:hover {
   color: var(--clr-info-a1);
+}
+
+#removeSong:hover{
+  color: var(--clr-danger-a0);
 }
