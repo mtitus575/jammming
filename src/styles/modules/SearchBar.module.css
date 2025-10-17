@@ -1,0 +1,21 @@
+.srchCtn {
+  border: 1px solid rgb(172, 166, 166);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+}
+.srchInput {
+  width: 90%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.1rem;
+}
+.srchIcon:hover {
+  color: red;
+}

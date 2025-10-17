@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "../styles/modules/App.css";
+import SearchBar from "./SearchBar";
 
 function App() {
   return (
     <>
       <h1>Jammming</h1>
-      <p>SearchBar Placeholder</p>
+      <SearchBar />
       <div>
         <section style={{ border: "1px solid", marginBottom: 8 }}>
           <h2>New albums</h2>
