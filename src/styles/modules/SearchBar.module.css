@@ -1,5 +1,5 @@
 .srchCtn {
-  border: 1px solid var(--clr-danger-a0);
+  background-color: var(--clr-surface-a1);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,8 @@
   outline: none;
   background: none;
   font-size: 1.1rem;
+  color: var(--clr-text-light-a0);
 }
 .srchIcon:hover {
-  color: red;
+  color: var(--clr-success-a0);
 }

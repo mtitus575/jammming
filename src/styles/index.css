@@ -3,6 +3,10 @@
   --clr-dark-a0: #000;
   --clr-light-a0: #fff;
 
+  /* Text colors */
+  --clr-text-light-a0: #c5c0ca;
+  --clr-text-dark-a0: #160126;
+
   /* Theme primary colors */
   --clr-primary-a0: #860bde;
   --clr-primary-a1: #9738e3;
@@ -66,13 +70,13 @@
 body {
   margin: 0;
   padding: 0;
-  }
+}
 
 a {
-    font-weight: 500;
-    color: var(--clr-info-a1);
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--clr-info-a2);
-  }
+  font-weight: 500;
+  color: var(--clr-info-a1);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--clr-info-a2);
+}
