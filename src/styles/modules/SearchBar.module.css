@@ -1,4 +1,5 @@
-.srchCtn {
+.srchCtn,
+.playlistNameCtn {
   background-color: var(--clr-surface-a1);
   width: 100%;
   display: flex;
@@ -9,14 +10,47 @@
   margin: 1rem 0;
   box-sizing: border-box;
 }
-.srchInput {
+
+.playlistNameCtn {
+  max-width: 80%;
+  justify-self: center;
+}
+
+.srchInput,
+.playlistInput {
   width: 90%;
   border: none;
   outline: none;
   background: none;
   font-size: 1.1rem;
+  padding-left: 0.2rem;
   color: var(--clr-text-light-a0);
 }
-.srchIcon:hover {
+.srchIcon:hover,
+.playlistSave:hover {
   color: var(--clr-success-a0);
+  transition: 250ms;
+}
+
+.playlistSave {
+  font-size: 1.3rem;
+  padding-right: 0.5rem;
+}
+
+/* save to spotify button */
+.saveToRemote{
+  background-color: var(--clr-surface-a3);
+  color: var(--clr-text-light-a0);
+  line-height: 1.5rem;
+  padding: 0 .4rem;
+  border-radius: 10px;
+  margin: 1rem;
+  transition-delay: 200ms;
+  transition: 500ms;
+
+}
+.saveToRemote:hover{
+  box-shadow: .1px .1px 10px 1px var(--clr-primary-a2);
+  transition: 250ms;
+  color: var(--clr-primary-a5);
 }

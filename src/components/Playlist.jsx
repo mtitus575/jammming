@@ -1,22 +1,32 @@
+//import logic:
+import { useState } from "react";
+//import styles:
 import styles from "../styles/modules/SearchResults.module.css";
+import playliststyles from "../styles/modules/SearchBar.module.css";
 import { CiCircleRemove } from "react-icons/ci";
-
-// This holds the songs that the user adds to their play list:
-/*It needs:
-1. A data/state source - where the added songs are stored
-2. map over that source and display a ul with the same data the search result shows.
-3. User input field to give the playlist a name
-4. Have a button to save this playlist to Spotify
-*/
+import { CiSaveUp2 } from "react-icons/ci";
 
 function Playlist({ playlist }) {
+  const [playlistName, setPlaylistName] = useState("New Name");
+
   return (
     <>
+      <div className={playliststyles.playlistNameCtn}>
+        <input
+          className={playliststyles.playlistInput}
+          type="text"
+          name="playlist"
+          id="userPlaylist"
+          placeholder="Playlist name"
+        />
+        <CiSaveUp2 className={playliststyles.playlistSave} />
+      </div>
       <input
+        id="userPlaylistName"
         type="text"
-        name="playlist"
-        id="userPlaylist"
-        placeholder="Name Your Playlist"
+        value={playlistName}
+        className={playliststyles.playlistInput}
+        style={{ display: "none", textAlign: " center" }}
       />
       <ul>
         {playlist.map((song, index) => {
@@ -39,6 +49,7 @@ function Playlist({ playlist }) {
             </li>
           );
         })}
+        <button className={playliststyles.saveToRemote}>Save to Spotify</button>
       </ul>
     </>
   );

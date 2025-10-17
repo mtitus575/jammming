@@ -8,17 +8,16 @@ import Playlist from "./Playlist";
 import { SIMPLE_DATA } from "../mockData";
 
 function App() {
-  const [musicData, setMusicData] = useState(SIMPLE_DATA)
-  const [playlist, setPlaylist] = useState([])
-
+  const [musicData, setMusicData] = useState(SIMPLE_DATA);
+  const [playlist, setPlaylist] = useState([]);
 
   return (
     <>
       <h1>Jammming</h1>
-      <SearchBar setData={setMusicData}/>
+      <SearchBar setData={setMusicData} />
       <SearchResults musicData={musicData} setPlaylist={setPlaylist} />
+      <Playlist playlist={playlist} />
       {/* Done */}
-      <Playlist playlist={playlist}/>  
 
       <nav>
         <button>Home</button>
