@@ -9,7 +9,28 @@
 }
 
 .ctn > button {
+  color: var(--clr-surface-a5);
   font-size: 1rem;
-  /* border: none; */
+  border: none;
   background-color: var(--clr-surface-a1);
+}
+
+.ctn > button:hover{
+  color: var(--clr-surface-a7);
+}
+
+.ctn > button:active{
+  color: var(--clr-primary-a2);
+}
+
+.ctn > button > p {
+  margin: 0;
+}
+
+.ctn > button > p {
+  margin: 0;
+}
+
+.icon{
+  font-size: 1.5rem;
 }

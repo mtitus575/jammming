@@ -7,15 +7,15 @@ function NavigationBar() {
   return (
     <nav className={styles.ctn}>
       <button>
-        <AiOutlineHome />
+        <AiOutlineHome className={styles.icon}/>
         <p>Home</p>
       </button>
       <button>
-        <MdOutlineExplore />
-        <p>Explore</p>
+        <MdOutlineExplore className={styles.icon}/>
+        <p>Playlist</p>
       </button>
       <button>
-        <CgProfile />
+        <CgProfile className={styles.icon}/>
         <p>Profile</p>
       </button>
     </nav>

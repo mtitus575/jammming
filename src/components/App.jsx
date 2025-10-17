@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Playlist from "./Playlist";
 import NavigationBar from "./navBtns/NavigationBar";
+import Track from "../components/Track";
 
 //importing mock data - in place of an API call:
 import { SIMPLE_DATA } from "../mockData";
@@ -11,6 +12,7 @@ import { SIMPLE_DATA } from "../mockData";
 function App() {
   const [musicData, setMusicData] = useState(SIMPLE_DATA);
   const [playlist, setPlaylist] = useState([]);
+  const [currentTrack, setCurrentTrack] = useState(null);
 
   return (
     <>
@@ -18,8 +20,7 @@ function App() {
       <SearchBar setData={setMusicData} />
       <SearchResults musicData={musicData} setPlaylist={setPlaylist} />
       <Playlist playlist={playlist} />
-
-      {/* Done */}
+      <Track playlist={playlist} currentTrack={currentTrack} />
       <NavigationBar />
     </>
   );
