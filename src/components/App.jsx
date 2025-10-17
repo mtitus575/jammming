@@ -1,12 +1,15 @@
 import { useState } from "react";
 import "../styles/modules/App.css";
 import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
 
 function App() {
   return (
     <>
       <h1>Jammming</h1>
       <SearchBar />
+      {/* Done */}
+      <SearchResults />
       <div>
         <section style={{ border: "1px solid", marginBottom: 8 }}>
           <h2>New albums</h2>
@@ -20,6 +23,7 @@ function App() {
             <p>Song name</p>
             <p>artist Name</p>
           </div>
+
         </section>
       </div>
       <div style={{ border: "2px solid blue" }}>

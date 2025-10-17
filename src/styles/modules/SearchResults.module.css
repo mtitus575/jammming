@@ -1,0 +1,54 @@
+.resultsCtn {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.resultLiCtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  list-style: none;
+  border: 1px solid;
+}
+
+.resultData {
+  display: flex;
+  align-items: center;
+}
+
+.albumImgCtn {
+  height: 5rem;
+  border: 1px solid;
+  border-radius: 15px;
+  margin-right: 0.1rem;
+}
+
+.albumImgCtn > img {
+  height: 100%;
+  border-radius: 15px;
+}
+
+.songName {
+  font-size: 0.8rem;
+  font-weight: 650;
+  margin: 0;
+}
+
+.artistName {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+.addToFavBtn {
+  font-size: 1.2rem;
+}
+
+.addToFavBtn:hover {
+  color: var(--clr-info-a1);
+}
