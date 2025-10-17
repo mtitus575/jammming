@@ -1,20 +1,22 @@
 .resultsCtn {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   padding: 0;
 }
 
 .resultLiCtn {
+  background-color: var(--clr-surface-a1);
   display: flex;
   justify-content: space-around;
   align-items: center;
   gap: 0.5rem;
+  margin: 0.1rem 0;
+  padding: 0.3rem 0;
   width: 100%;
   list-style: none;
-  border: 1px solid;
+  border-bottom: 0.1px transparent;
 }
 
 .resultData {

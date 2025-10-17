@@ -3,8 +3,11 @@ import { DATA } from "../mockData";
 import { IoAdd } from "react-icons/io5";
 
 function SearchResults() {
+  // NOTE!!! The style={{display: 'none'}} is used to hide the results for now.
+  // This must become visible when searching for songs, with the returned data.
+
   return (
-    <ul className={styles.resultsCtn}>
+    <ul style={{ display: "none" }} className={styles.resultsCtn}>
       {DATA.map((album, index) => {
         return (
           <li className={styles.resultLiCtn}>
