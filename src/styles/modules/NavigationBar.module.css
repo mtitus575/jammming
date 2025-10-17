@@ -1,0 +1,15 @@
+.ctn {
+  border-top: 1px solid var(--clr-surface-a4);
+  background-color: var(--clr-surface-a1);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ctn > button {
+  font-size: 1rem;
+  /* border: none; */
+  background-color: var(--clr-surface-a1);
+}

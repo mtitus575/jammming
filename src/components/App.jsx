@@ -3,6 +3,7 @@ import "../styles/modules/App.css";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Playlist from "./Playlist";
+import NavigationBar from "./navBtns/NavigationBar";
 
 //importing mock data - in place of an API call:
 import { SIMPLE_DATA } from "../mockData";
@@ -17,13 +18,9 @@ function App() {
       <SearchBar setData={setMusicData} />
       <SearchResults musicData={musicData} setPlaylist={setPlaylist} />
       <Playlist playlist={playlist} />
-      {/* Done */}
 
-      <nav>
-        <button>Home</button>
-        <button>Explore</button>
-        <button>Profile</button>
-      </nav>
+      {/* Done */}
+      <NavigationBar />
     </>
   );
 }
