@@ -8,7 +8,14 @@ import { CiSaveUp2 } from "react-icons/ci";
 
 function Playlist({ playlist }) {
   //This state will be used to store the name of the playlist set by the user
-  const [playlistName, setPlaylistName] = useState("New Name");
+  const [playlistName, setPlaylistName] = useState("");
+  const [displayPlaylistName, setDisplayPlaylistName] = useState(false);
+
+  //ClickHandler to save user playlist name:
+  function handlePlaylistNameClick(e) {
+    setDisplayPlaylistName(true);
+  }
+  console.log(displayPlaylistName);
 
   return (
     <>
@@ -19,16 +26,25 @@ function Playlist({ playlist }) {
           name="playlist"
           id="userPlaylist"
           placeholder="Playlist name"
+          // value={playlistName}
+          onChange={({ target }) => setPlaylistName(target.value)}
         />
-        <CiSaveUp2 className={playliststyles.playlistSave} />
+        <CiSaveUp2
+          className={playliststyles.playlistSave}
+          onClick={handlePlaylistNameClick}
+        />
       </div>
-      <input
-        id="userPlaylistName"
-        type="text"
-        value={playlistName}
-        className={playliststyles.playlistInput}
-        style={{ display: "", textAlign: " center" }}
-      />
+      {!displayPlaylistName ? (
+        ""
+      ) : (
+        <input
+          id="userPlaylistName"
+          type="text"
+          value={playlistName}
+          className={playliststyles.playlistInput}
+          style={{ display: "", textAlign: "center" }}
+        />
+      )}
       <ul>
         {playlist.map((song, index) => {
           return (
