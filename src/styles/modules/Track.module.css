@@ -1,0 +1,49 @@
+.trackCtn {
+    /* Needs a background image */
+  min-height: 100vh;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+}
+
+.activeTrack {
+    /* this is not needed */
+    display: block;
+}
+
+.controlsCtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+#playIcon {
+  font-size: 1.6rem;
+}
+
+#pauseIcon {
+  font-size: 1.6rem;
+}
+
+.artist {
+    justify-self: flex-start;
+    margin-left: 1rem;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+.artist > p, .artist > h5 {
+    padding: 0;
+    margin: 0;
+}
+
+.playProgress{
+    width: 95%;
+
+}
