@@ -1,4 +1,8 @@
 // Simplified data object with no nesting
+import song1 from "../../testMusic/song1.mp3";
+import song2 from "../../testMusic/song2.mp3";
+import song3 from "../../testMusic/song3.mp3";
+
 export const SIMPLE_DATA = [
   {
     songName: "Watermelon Sugar",
@@ -6,18 +10,21 @@ export const SIMPLE_DATA = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT33NT8YuEC48HDIh-tiTbAn0IkNJSHbLKZEQ&s",
     album: "Fine Line",
+    song: song1,
   },
   {
     songName: "Blinding Lights",
     artist: "The Weeknd",
     image: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36",
     album: "After Hours",
+    song: song2,
   },
   {
     songName: "Shape of You",
     artist: "Ed Sheeran",
     image: "https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96",
     album: "÷ (Divide)",
+    song: song3,
   },
 ];
 

@@ -1,6 +1,6 @@
 import styles from "../styles/modules/SearchResults.module.css";
 import trackStyles from "../styles/modules/Track.module.css";
-import song from "../../../testSong.mp3";
+import song from "../../../testMusic/song1.mp3";
 //icons:
 import { CiCircleRemove } from "react-icons/ci";
 import { FaShuffle } from "react-icons/fa6";
@@ -9,13 +9,21 @@ import { FaPauseCircle } from "react-icons/fa";
 import { FaPlayCircle } from "react-icons/fa";
 import { IoIosSkipForward } from "react-icons/io";
 import { FaRepeat } from "react-icons/fa6";
+import { useEffect } from "react";
 
-function Track({ playlist, currentTrack }) {
+function Track({ playlist, currentTrack, setCurrentTrack }) {
   //  currentTrack param will be used to play the active song when any song is being played.
   // Use this is the "currentTrack" class below
-
+  useEffect(() => {
+    const testSong = playlist[0];
+    if (testSong) {
+      console.log("Current song state set.");
+      console.log(`Ready to play currentTrack from artist: ${testSong.artist}`);
+      setCurrentTrack(testSong.song);
+    }
+  }, [playlist]);
   return (
-    <section style={{ display: "none" }} className={trackStyles.trackCtn}>
+    <section style={{ display: "" }} className={trackStyles.trackCtn}>
       <div className={trackStyles.activeTrack}>
         <section className={trackStyles.controlsCtn}>
           <FaShuffle className={trackStyles.icon} />
@@ -41,7 +49,7 @@ function Track({ playlist, currentTrack }) {
           id="playProgress"
           className={trackStyles.playProgress}
         />
-        <audio src={song} controls></audio>
+        <audio src={currentTrack ? currentTrack : ""} controls></audio>
       </div>
       <div>
         <h5>Playlist</h5>
