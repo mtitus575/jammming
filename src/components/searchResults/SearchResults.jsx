@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "../styles/modules/SearchResults.module.css";
+import styles from "./SearchResults.module.css";
 import { IoAdd } from "react-icons/io5";
 
 function SearchResults({ musicData, setPlaylist }) {

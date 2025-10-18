@@ -1,8 +1,8 @@
 //import logic:
 import { useState } from "react";
 //import styles:
-import styles from "../styles/modules/SearchResults.module.css";
-import playliststyles from "../styles/modules/SearchBar.module.css";
+import styles from "../searchResults/SearchResults.module.css";
+import playliststyles from "../searchBar/SearchBar.module.css";
 import { CiCircleRemove } from "react-icons/ci";
 import { CiSaveUp2 } from "react-icons/ci";
 

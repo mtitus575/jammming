@@ -1,6 +1,5 @@
-import styles from "../styles/modules/SearchResults.module.css";
-import trackStyles from "../styles/modules/Track.module.css";
-import song from "../../../testMusic/song1.mp3";
+import styles from "../searchResults/SearchResults.module.css";
+import trackStyles from "./Track.module.css";
 //icons:
 import { CiCircleRemove } from "react-icons/ci";
 import { FaShuffle } from "react-icons/fa6";

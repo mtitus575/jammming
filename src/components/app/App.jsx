@@ -1,16 +1,16 @@
 import { useState } from "react";
 //components:
-import Login from "./auth/Login";
-import Logout from "./auth/Logout";
-import SearchBar from "./SearchBar";
-import SearchResults from "./SearchResults";
-import Playlist from "./Playlist";
-import NavigationBar from "./navBtns/NavigationBar";
-import Track from "../components/Track";
+import Login from "../auth/login/Login";
+import Logout from "../auth/logout/Logout";
+import SearchBar from "../searchBar/SearchBar";
+import SearchResults from "../searchResults/SearchResults";
+import Playlist from "../playlist/Playlist";
+import NavigationBar from "../nav/NavigationBar";
+import Track from "../track/Track";
 //styles:
-import "../styles/modules/App.css";
+import "./App.css";
 //mock data - in place of an API call:
-import { SIMPLE_DATA } from "../mockData";
+import { SIMPLE_DATA } from "../../mockData";
 //------------------------------------//
 
 function App() {
