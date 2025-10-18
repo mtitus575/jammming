@@ -7,6 +7,7 @@ import { CiCircleRemove } from "react-icons/ci";
 import { CiSaveUp2 } from "react-icons/ci";
 
 function Playlist({ playlist }) {
+  //This state will be used to store the name of the playlist set by the user
   const [playlistName, setPlaylistName] = useState("New Name");
 
   return (
@@ -26,7 +27,7 @@ function Playlist({ playlist }) {
         type="text"
         value={playlistName}
         className={playliststyles.playlistInput}
-        style={{ display: "none", textAlign: " center" }}
+        style={{ display: "", textAlign: " center" }}
       />
       <ul>
         {playlist.map((song, index) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//components:
 import Login from "./auth/Login";
 import Logout from "./auth/Logout";
 import SearchBar from "./SearchBar";
@@ -9,21 +9,20 @@ import NavigationBar from "./navBtns/NavigationBar";
 import Track from "../components/Track";
 //styles:
 import "../styles/modules/App.css";
-//importing mock data - in place of an API call:
+//mock data - in place of an API call:
 import { SIMPLE_DATA } from "../mockData";
 //------------------------------------//
 
 function App() {
   const [login, setLogin] = useState(false);
-  const [logout, setLogout] = useState(null);
   const [musicData, setMusicData] = useState(SIMPLE_DATA);
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
 
   if (!login) {
-    return <Login setLogin={setLogin}/>
+    return <Login setLogin={setLogin} />;
   }
-  return ( 
+  return (
     <>
       <Logout setLogin={setLogin} />
       <h1>Jammming</h1>
