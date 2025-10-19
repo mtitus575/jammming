@@ -12,10 +12,9 @@ function Playlist({ playlist }) {
   const [displayPlaylistName, setDisplayPlaylistName] = useState(false);
 
   //ClickHandler to save user playlist name:
-  function handlePlaylistNameClick(e) {
+  function handlePlaylistNameClick() {
     setDisplayPlaylistName(true);
   }
-  console.log(displayPlaylistName);
 
   return (
     <>

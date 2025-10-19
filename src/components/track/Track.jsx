@@ -16,8 +16,6 @@ function Track({ playlist, currentTrack, setCurrentTrack }) {
   useEffect(() => {
     const testSong = playlist[0];
     if (testSong) {
-      console.log("Current song state set.");
-      console.log(`Ready to play currentTrack from artist: ${testSong.artist}`);
       setCurrentTrack(testSong.song);
     }
   }, [playlist]);
