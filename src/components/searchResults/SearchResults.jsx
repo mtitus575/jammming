@@ -10,15 +10,25 @@ function debugLog(...params) {
 import { useEffect } from "react";
 import styles from "./SearchResults.module.css";
 import { IoAdd } from "react-icons/io5";
+import Playlist from "../playlist/Playlist";
 
-function SearchResults({ musicData, setPlaylist }) {
-  useEffect(() => {
-    const testList2 = musicData[0];
-    const testList1 = musicData[1];
-    setPlaylist([testList1, testList2]);
-  }, [musicData]);
+function SearchResults({ musicData, playlist, setPlaylist }) {
+  function handleAddClick(song) {
+    //Check if the song already exists in the playlist:
+    const songExists = playlist.some((track) => track.id === song.id);
+    if (songExists) {
+      debugLog(`The track already exists in the playlist. NOT added.`);
+      return;
+    }
 
-  debugLog(musicData)
+    debugLog(`Adding ${song.songName} to playlist.`);
+    setPlaylist((prev) => [...prev, song]);
+
+  }
+  // useEffect(() => {
+
+  // }, []);
+
   return (
     <ul className={styles.resultsCtn}>
       {musicData.map((song) => {
@@ -36,7 +46,7 @@ function SearchResults({ musicData, setPlaylist }) {
               </div>
             </article>
             <article className={styles.addToFavBtn}>
-              <IoAdd />
+              <IoAdd onClick={() => handleAddClick(song)} />
             </article>
           </li>
         );

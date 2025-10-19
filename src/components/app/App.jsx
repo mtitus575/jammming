@@ -26,7 +26,7 @@ import { APIcalls } from "../../APICall";
 
 function App() {
   //State:
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [musicData, setMusicData] = useState(SIMPLE_DATA);
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
@@ -142,7 +142,7 @@ function App() {
       <Logout setLogin={setLogin} />
       <h1>Jammming</h1>
       <SearchBar setMusicData={setMusicData} apiToken={apiToken} />
-      <SearchResults musicData={musicData} setPlaylist={setPlaylist} />
+      <SearchResults musicData={musicData} playlist={playlist} setPlaylist={setPlaylist} />
       <Playlist playlist={playlist} />
       <Track
         playlist={playlist}
