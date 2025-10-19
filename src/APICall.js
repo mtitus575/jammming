@@ -41,8 +41,10 @@ async function getSpotifyToken(clientId, clientSecret) {
     console.error("Full error:", error); // Added more debugging
   }
 }
-
-async function searchSpotify(token, searchInput, type = "track,artist,album") {
+/*The default values for type:
+I removed  `type = "track,artist,album"`
+This can later be added to get more types when the user searches */
+async function searchSpotify(token, searchInput, type = "track") {
   // Clean and encode the search input
   const cleanQuery = searchInput.trim();
   const encodedQuery = encodeURIComponent(cleanQuery);

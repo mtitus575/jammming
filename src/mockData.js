@@ -5,6 +5,7 @@ import song3 from "../../testMusic/song3.mp3";
 
 export const SIMPLE_DATA = [
   {
+    id: 'test1',
     songName: "Watermelon Sugar",
     artist: "Harry Styles",
     image:
@@ -13,6 +14,7 @@ export const SIMPLE_DATA = [
     song: song1,
   },
   {
+    id: 'test2',
     songName: "Blinding Lights",
     artist: "The Weeknd",
     image: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36",
@@ -20,6 +22,7 @@ export const SIMPLE_DATA = [
     song: song2,
   },
   {
+    id: 'test3',
     songName: "Shape of You",
     artist: "Ed Sheeran",
     image: "https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96",

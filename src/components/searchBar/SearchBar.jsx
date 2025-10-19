@@ -1,5 +1,5 @@
 //My DEBUG function:
-const DEBUG = true;
+const DEBUG = false;
 function debugLog(...params) {
   if (DEBUG) {
     console.log(...params);
@@ -42,8 +42,27 @@ function SearchBar({ apiToken, setMusicData }) {
         debugLog(`Data fetch successfull.`, data);
       }
 
+      // The data structure I will use for the app for now:
+      //--> This can later be updated to add more features based on what the API can provide
+      //--> I am only extracting a few things for now by mapping over the returned API data.
+      const tracksArr = data.tracks?.items?.map((track) => {
+        debugLog(`Extracting tracks from the API data`);
+        return {
+          id: track.id,
+          songName: track.name,
+          artist: track.artists[0].name,
+          image: track.album.images[0].url,
+          album: track.album.name,
+          song: track.uri,
+        };
+      });
+      debugLog(`Created an array of TRACK objects:`, tracksArr);
+
+      if(tracksArr && tracksArr.length > 0){
+        debugLog('Saving tracks to musicData state.')
+        setMusicData(tracksArr)
+      }
       /*/NEXT STEPS:
-        0. Create a function to clear the token when it expires.
         1. Go through the returned data structure - check how data is returned.
         2. extract only the data I need for this app's features for now.
         3. Build an object literal with the data I want.

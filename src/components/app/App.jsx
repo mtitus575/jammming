@@ -1,5 +1,5 @@
 //My DEBUG function:
-const DEBUG = true;
+const DEBUG = false;
 function debugLog(...params) {
   if (DEBUG) {
     console.log(...params);
@@ -31,6 +31,11 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [apiToken, setApiToken] = useState("");
+
+  //REMOVE: only here during the build process.
+  if (musicData.length > 3) {
+    debugLog(`musicData state updated in the App Component:`, musicData);
+  }
 
   //Get spotify Access Token:
   useEffect(() => {
@@ -127,7 +132,6 @@ function App() {
     };
   }, []);
 
-  //fetch searchQuery data from the API:
 
   //---------------------------------------//
   if (!login) {

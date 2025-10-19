@@ -19,6 +19,7 @@ function Track({ playlist, currentTrack, setCurrentTrack }) {
       setCurrentTrack(testSong.song);
     }
   }, [playlist]);
+
   return (
     <section style={{ display: "" }} className={trackStyles.trackCtn}>
       <div className={trackStyles.activeTrack}>
