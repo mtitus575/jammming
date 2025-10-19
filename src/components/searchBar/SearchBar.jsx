@@ -43,6 +43,7 @@ function SearchBar({ apiToken, setMusicData }) {
       }
 
       /*/NEXT STEPS:
+        0. Create a function to clear the token when it expires.
         1. Go through the returned data structure - check how data is returned.
         2. extract only the data I need for this app's features for now.
         3. Build an object literal with the data I want.
