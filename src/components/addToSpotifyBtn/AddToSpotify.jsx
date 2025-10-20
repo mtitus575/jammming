@@ -10,7 +10,14 @@ function debugLog(...params) {
 import styles from "../addToSpotifyBtn/AddToSpotify.module.css";
 import { APIcalls } from "../../APICall";
 
-function AddToSpotify({ playlist, apiToken, playlistName }) {
+function AddToSpotify({ playlist, apiToken, playlistName, userToken, user }) {
+  // Debug: Log the props to see what we're receiving
+  debugLog("AddToSpotify props:", {
+    userToken: !!userToken,
+    user: !!user,
+    playlistName,
+  });
+
   // async function handleSave() {
   //   debugLog("Starting process to save playlist to Spotify...");
 
@@ -55,32 +62,45 @@ function AddToSpotify({ playlist, apiToken, playlistName }) {
   //     alert("Failed to create playlist. Please try again")
   //   }
   // }
-  // In AddToSpotify.jsx - temporarily test with a simpler request
-async function handleSave() {
-  debugLog("Testing token...");
-  
-  try {
-    // Test if token works by getting current user
-    const testRes = await fetch("https://api.spotify.com/v1/me", {
-      headers: {
-        "Authorization": `Bearer ${apiToken}`
-      }
-    });
-    
-    debugLog("Token test response:", testRes.status);
-    
-    if (testRes.status === 401) {
-      alert("Token is invalid - you need user authentication, not client credentials");
+  // In AddToSpotify.jsx - user authenticated playlist creation
+  async function handleSave() {
+    debugLog("Starting playlist save to Spotify...");
+
+    // Check if user is authenticated
+    if (!userToken || !user) {
+      alert("Please log in with Spotify first to save playlists.");
       return;
     }
-    
-    const userData = await testRes.json();
-    debugLog("User data:", userData);
-    
-  } catch (error) {
-    debugLog("Token test failed:", error);
+
+    if (!playlistName || playlistName.trim() === "") {
+      alert("Please enter a playlist name before saving.");
+      return;
+    }
+
+    if (playlist.length === 0) {
+      alert("Your playlist is empty. Add some songs first!");
+      return;
+    }
+
+    try {
+      debugLog(
+        `Creating playlist: "${playlistName}" for user: ${user.display_name}`
+      );
+
+      const newPlaylist = await APIcalls.createPlaylist(
+        userToken, // Use user token, not API token
+        user.id, // Use real user ID
+        playlistName,
+        `Created with Jammming app - ${playlist.length} tracks`
+      );
+
+      debugLog("Playlist created successfully!", newPlaylist);
+      alert(`Playlist "${playlistName}" created successfully on Spotify!`);
+    } catch (error) {
+      debugLog("Error creating playlist:", error);
+      alert("Failed to create playlist. Please try again.");
+    }
   }
-}
 
   return (
     <>

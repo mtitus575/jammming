@@ -18,7 +18,7 @@ import playliststyles from "../playlist/PlaylistStyles.module.css";
 import { CiCircleRemove } from "react-icons/ci";
 import { CiSaveUp2 } from "react-icons/ci";
 
-function Playlist({ playlist, setPlaylist, apiToken }) {
+function Playlist({ playlist, setPlaylist, apiToken, userToken, user }) {
   //This state will be used to store the name of the playlist set by the user
   const [playlistName, setPlaylistName] = useState("");
   const [isEditing, setIsEditing] = useState(true); // Start in editing mode
@@ -93,6 +93,8 @@ function Playlist({ playlist, setPlaylist, apiToken }) {
           playlist={playlist}
           playlistName={playlistName}
           apiToken={apiToken}
+          userToken={userToken}
+          user={user}
         />
       </ul>
     </>
