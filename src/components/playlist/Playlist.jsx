@@ -1,3 +1,12 @@
+//My DEBUG function:
+const DEBUG = true;
+function debugLog(...params) {
+  if (DEBUG) {
+    console.log(...params);
+  }
+}
+//=============================//
+
 //import logic:
 import { useState } from "react";
 //import styles:
@@ -6,33 +15,46 @@ import playliststyles from "../searchBar/SearchBar.module.css";
 import { CiCircleRemove } from "react-icons/ci";
 import { CiSaveUp2 } from "react-icons/ci";
 
-function Playlist({ playlist }) {
+function Playlist({ playlist, setPlaylist }) {
   //This state will be used to store the name of the playlist set by the user
   const [playlistName, setPlaylistName] = useState("");
   const [displayPlaylistName, setDisplayPlaylistName] = useState(false);
 
   //ClickHandler to save user playlist name:
-  function handlePlaylistNameClick() {
+  function handleNameClick(e) {
+    e.preventDefault();
+
     setDisplayPlaylistName(true);
+  }
+
+  function handleRemoveClick(songId) {
+    debugLog("Removing item from playlist.");
+    setPlaylist((prev) => prev.filter((track) => track.id !== songId)); //only keep the trackId that not equal songId. That becomes the new array
   }
 
   return (
     <>
-      <div className={playliststyles.playlistNameCtn}>
-        <input
-          className={playliststyles.playlistInput}
-          type="text"
-          name="playlist"
-          id="userPlaylist"
-          placeholder="Playlist name"
-          // value={playlistName}
-          onChange={({ target }) => setPlaylistName(target.value)}
-        />
-        <CiSaveUp2
-          className={playliststyles.playlistSave}
-          onClick={handlePlaylistNameClick}
-        />
-      </div>
+      {!displayPlaylistName && (
+        <form
+          className={playliststyles.playlistNameCtn}
+          onSubmit={handleNameClick}
+        >
+          <input
+            className={playliststyles.playlistInput}
+            type="text"
+            name="playlist"
+            id="userPlaylist"
+            placeholder="Playlist name"
+            // value={playlistName}
+            onChange={({ target }) => setPlaylistName(target.value)}
+            onSubmit={handleNameClick}
+          />
+          <CiSaveUp2
+            className={playliststyles.playlistSave}
+            onClick={handleNameClick}
+          />
+        </form>
+      )}
       {!displayPlaylistName ? (
         ""
       ) : (
@@ -60,7 +82,7 @@ function Playlist({ playlist }) {
                 </div>
               </article>
               <article className={styles.addToFavBtn} id={styles.removeSong}>
-                <CiCircleRemove />
+                <CiCircleRemove onClick={() => handleRemoveClick(song.id)} />
               </article>
             </li>
           );

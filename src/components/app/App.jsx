@@ -5,6 +5,7 @@ function debugLog(...params) {
     console.log(...params);
   }
 }
+//=============================//
 
 //Start of app:
 import { useEffect, useState } from "react";
@@ -143,7 +144,7 @@ function App() {
       <h1>Jammming</h1>
       <SearchBar setMusicData={setMusicData} apiToken={apiToken} />
       <SearchResults musicData={musicData} playlist={playlist} setPlaylist={setPlaylist} />
-      <Playlist playlist={playlist} />
+      <Playlist playlist={playlist} setPlaylist={setPlaylist} />
       <Track
         playlist={playlist}
         currentTrack={currentTrack}

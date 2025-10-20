@@ -58,27 +58,10 @@ function SearchBar({ apiToken, setMusicData }) {
       });
       debugLog(`Created an array of TRACK objects:`, tracksArr);
 
-      if(tracksArr && tracksArr.length > 0){
-        debugLog('Saving tracks to musicData state.')
-        setMusicData(tracksArr)
+      if (tracksArr && tracksArr.length > 0) {
+        debugLog("Saving tracks to musicData state.");
+        setMusicData(tracksArr);
       }
-      /*/NEXT STEPS:
-        1. Go through the returned data structure - check how data is returned.
-        2. extract only the data I need for this app's features for now.
-        3. Build an object literal with the data I want.
-        4. Consider only using the "tracks" object from the returned data for now.
-        4. Save that object to the `musicData` state for usage
-
-        current structure:
-        cont obj = {
-            songName: "Watermelon Sugar",
-            artist: "Harry Styles",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT33NT8YuEC48HDIh-tiTbAn0IkNJSHbLKZEQ&s",
-            album: "Fine Line",
-            song: song1,
-          },
-      */
     }
   }
 
