@@ -1,5 +1,5 @@
 //My DEBUG function:
-const DEBUG = true;
+const DEBUG = false;
 function debugLog(...params) {
   if (DEBUG) {
     console.log(...params);
