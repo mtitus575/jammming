@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # API Keys and Secrets
-private.js
+# private.js
 *.env
 .env
 .env.local
