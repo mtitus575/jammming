@@ -23,6 +23,7 @@ import "./App.css";
 import { SIMPLE_DATA } from "../../mockData";
 //API functions:
 import { APIcalls } from "../../APICall";
+import { KEYS } from "../../../private";
 //------------------------------------//
 
 function App() {
@@ -46,8 +47,8 @@ function App() {
     if (!storedToken) {
       debugLog("No token found - fetching from API...");
       async function getToken() {
-        const clientId = "81fc5b4147ae49498e7fd9822ffbb160";
-        const clientSecret = "064bc6a7463349c9a37627361c3b4038";
+        const clientId = KEYS.clientId;
+        const clientSecret = KEYS.clientSecret;
         const tokenData = await APIcalls.getSpotifyToken(
           clientId,
           clientSecret
@@ -133,7 +134,6 @@ function App() {
     };
   }, []);
 
-
   //---------------------------------------//
   if (!login) {
     return <Login setLogin={setLogin} />;
@@ -143,7 +143,11 @@ function App() {
       <Logout setLogin={setLogin} />
       <h1>Jammming</h1>
       <SearchBar setMusicData={setMusicData} apiToken={apiToken} />
-      <SearchResults musicData={musicData} playlist={playlist} setPlaylist={setPlaylist} />
+      <SearchResults
+        musicData={musicData}
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+      />
       <Playlist playlist={playlist} setPlaylist={setPlaylist} />
       <Track
         playlist={playlist}

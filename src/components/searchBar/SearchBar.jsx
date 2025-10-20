@@ -41,7 +41,6 @@ function SearchBar({ apiToken, setMusicData }) {
       } else {
         debugLog(`Data fetch successfull.`, data);
       }
-      console.log(data)
 
       // The data structure I will use for the app for now:
       //--> This can later be updated to add more features based on what the API can provide
