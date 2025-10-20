@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# API Keys and Secrets - ADD THESE LINES
+private.js
+*.env
+.env
+.env.local
+.env.production
+.env.development
