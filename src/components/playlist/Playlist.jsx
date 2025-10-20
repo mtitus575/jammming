@@ -36,6 +36,7 @@ function Playlist({ playlist, setPlaylist }) {
     <>
       {!displayPlaylistName && (
         <form
+          name="playlistName"
           className={playliststyles.playlistNameCtn}
           onSubmit={handleNameClick}
         >
@@ -87,7 +88,11 @@ function Playlist({ playlist, setPlaylist }) {
             </li>
           );
         })}
-        <button className={playliststyles.saveToRemote}>Save to Spotify</button>
+        {playlist.length > 0 && (
+          <button className={playliststyles.saveToRemote}>
+            Save to Spotify
+          </button>
+        )}
       </ul>
     </>
   );

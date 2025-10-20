@@ -66,7 +66,7 @@ function SearchBar({ apiToken, setMusicData }) {
   }
 
   return (
-    <form className={styles.srchCtn} onSubmit={handleSubmit}>
+    <form name="searchInput" className={styles.srchCtn} onSubmit={handleSubmit}>
       <input
         value={searchInput}
         onChange={({ target }) => setSearchInput(target.value)}
