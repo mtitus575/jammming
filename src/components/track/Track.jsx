@@ -1,3 +1,12 @@
+//My DEBUG function:
+const DEBUG = true;
+function debugLog(...params) {
+  if (DEBUG) {
+    console.log(...params);
+  }
+}
+//=============================//
+
 import styles from "../searchResults/SearchResults.module.css";
 import trackStyles from "./Track.module.css";
 //icons:
@@ -14,11 +23,17 @@ function Track({ playlist, currentTrack, setCurrentTrack }) {
   //  currentTrack param will be used to play the active song when any song is being played.
   // Use this is the "currentTrack" class below
   useEffect(() => {
-    const testSong = playlist[0];
-    if (testSong) {
-      setCurrentTrack(testSong.song);
+    debugLog("I AM WORKING HERE NEXT!!!");
+    /* NEXT steps:
+    1. See sticky notes.
+     */
+
+    if (playlist.length > 0) {
+      debugLog("Setting current track.");
+      debugLog(playlist[0].song);
+      setCurrentTrack(playlist[0].song);
     }
-  }, [playlist]);
+  }, []);
 
   return (
     <section style={{ display: "" }} className={trackStyles.trackCtn}>
