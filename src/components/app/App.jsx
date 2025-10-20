@@ -149,11 +149,11 @@ function App() {
         setPlaylist={setPlaylist}
       />
       <Playlist playlist={playlist} setPlaylist={setPlaylist} />
-      <Track
+      {/* <Track
         playlist={playlist}
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
-      />
+      /> */}
       <NavigationBar />
     </>
   );

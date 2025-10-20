@@ -9,10 +9,12 @@ function debugLog(...params) {
 
 //import logic:
 import { useState } from "react";
+//components:
+import AddToSpotify from "../addToSpotifyBtn/AddToSpotify";
 //import styles:
 import styles from "../searchResults/SearchResults.module.css";
 import playliststyles from "../playlist/PlaylistStyles.module.css";
-
+//icons
 import { CiCircleRemove } from "react-icons/ci";
 import { CiSaveUp2 } from "react-icons/ci";
 
@@ -69,7 +71,7 @@ function Playlist({ playlist, setPlaylist }) {
       <ul>
         {playlist.map((song, index) => {
           return (
-            <li className={styles.resultLiCtn} key={index}>
+            <li className={styles.resultLiCtn} key={song.id}>
               <article className={styles.resultData}>
                 <div className={styles.albumImgCtn}>
                   <img src={song.image} alt="albumImage" />
@@ -87,11 +89,7 @@ function Playlist({ playlist, setPlaylist }) {
             </li>
           );
         })}
-        {playlist.length > 0 && (
-          <button className={playliststyles.saveToRemote}>
-            Save to Spotify
-          </button>
-        )}
+        <AddToSpotify playlist={playlist} />
       </ul>
     </>
   );
