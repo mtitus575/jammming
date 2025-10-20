@@ -29,10 +29,15 @@ import { KEYS } from "../../../private";
 function App() {
   //State:
   const [login, setLogin] = useState(true);
-  const [musicData, setMusicData] = useState(SIMPLE_DATA);
+  const [musicData, setMusicData] = useState([]);
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [apiToken, setApiToken] = useState("");
+
+  // NEW STATE for user authentication (added for playlist saving)
+  const [userToken, setUserToken] = useState("");
+  const [user, setUser] = useState(null);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
   //REMOVE: only here during the build process.
   if (musicData.length > 3) {
@@ -134,6 +139,51 @@ function App() {
     };
   }, []);
 
+  // NEW useEffect for user authentication (for playlist saving)
+  useEffect(() => {
+    const handleUserAuth = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+
+      if (code && !isUserAuthenticated && !userToken) {
+        try {
+          debugLog("User authorization code found, getting token...");
+          const clientId = KEYS.clientId;
+
+          // Clean URL immediately to prevent re-processing
+          window.history.replaceState({}, document.title, "/");
+
+          const tokenData = await APIcalls.getUserAccessToken(clientId, code);
+          debugLog("User token received:", !!tokenData.access_token);
+
+          setUserToken(tokenData.access_token);
+
+          const userProfile = await APIcalls.getCurrentUser(
+            tokenData.access_token
+          );
+          setUser(userProfile);
+          setIsUserAuthenticated(true);
+
+          debugLog("User authenticated:", userProfile.display_name);
+        } catch (error) {
+          debugLog("User authentication failed:", error);
+        }
+      }
+    };
+
+    handleUserAuth();
+  }, [isUserAuthenticated, userToken]);
+
+  // Function to start user login
+  const handleSpotifyLogin = async () => {
+    try {
+      const clientId = KEYS.clientId;
+      await APIcalls.redirectToAuthCodeFlow(clientId);
+    } catch (error) {
+      debugLog("Login failed:", error);
+    }
+  };
+
   //---------------------------------------//
   if (!login) {
     return <Login setLogin={setLogin} />;
@@ -142,18 +192,56 @@ function App() {
     <>
       <Logout setLogin={setLogin} />
       <h1>Jammming</h1>
+
+      {/* NEW: User Authentication Section */}
+      {!isUserAuthenticated ? (
+        <div
+          style={{
+            margin: "1rem 0",
+            padding: "1rem",
+            background: "#f0f0f0",
+            borderRadius: "8px",
+          }}
+        >
+          <p>🎵 To save playlists to Spotify, please log in:</p>
+          <button
+            onClick={handleSpotifyLogin}
+            style={{ padding: "0.5rem 1rem" }}
+          >
+            Login with Spotify
+          </button>
+        </div>
+      ) : (
+        <div
+          style={{
+            margin: "1rem 0",
+            padding: "1rem",
+            background: "#e8f5e8",
+            borderRadius: "8px",
+          }}
+        >
+          <p>✅ Welcome, {user?.display_name}! You can now save playlists.</p>
+        </div>
+      )}
+
       <SearchBar setMusicData={setMusicData} apiToken={apiToken} />
       <SearchResults
         musicData={musicData}
         playlist={playlist}
         setPlaylist={setPlaylist}
       />
-      <Playlist playlist={playlist} setPlaylist={setPlaylist} />
-      <Track
+      <Playlist
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+        apiToken={apiToken}
+        userToken={userToken}
+        user={user}
+      />
+      {/* <Track
         playlist={playlist}
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
-      />
+      /> */}
       <NavigationBar />
     </>
   );
