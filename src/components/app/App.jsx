@@ -148,7 +148,11 @@ function App() {
         playlist={playlist}
         setPlaylist={setPlaylist}
       />
-      <Playlist playlist={playlist} setPlaylist={setPlaylist} />
+      <Playlist
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+        apiToken={apiToken}
+      />
       {/* <Track
         playlist={playlist}
         currentTrack={currentTrack}
