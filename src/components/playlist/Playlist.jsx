@@ -11,20 +11,27 @@ function debugLog(...params) {
 import { useState } from "react";
 //import styles:
 import styles from "../searchResults/SearchResults.module.css";
-import playliststyles from "../searchBar/SearchBar.module.css";
+import playliststyles from "../playlist/PlaylistStyles.module.css";
+
 import { CiCircleRemove } from "react-icons/ci";
 import { CiSaveUp2 } from "react-icons/ci";
 
 function Playlist({ playlist, setPlaylist }) {
   //This state will be used to store the name of the playlist set by the user
   const [playlistName, setPlaylistName] = useState("");
-  const [displayPlaylistName, setDisplayPlaylistName] = useState(false);
+  const [isEditing, setIsEditing] = useState(true); // Start in editing mode
 
-  //ClickHandler to save user playlist name:
-  function handleNameClick(e) {
+  function handleSave(e) {
     e.preventDefault();
 
-    setDisplayPlaylistName(true);
+    if (playlistName.trim()) {
+      setIsEditing(false); // Switch to display mode
+      debugLog(`Playlist name saved: ${playlistName}`);
+    }
+  }
+
+  function handleEdit() {
+    setIsEditing(true); // Switch back to editing mode
   }
 
   function handleRemoveClick(songId) {
@@ -34,38 +41,30 @@ function Playlist({ playlist, setPlaylist }) {
 
   return (
     <>
-      {!displayPlaylistName && (
-        <form
-          name="playlistName"
-          className={playliststyles.playlistNameCtn}
-          onSubmit={handleNameClick}
-        >
+      {playlist.length > 0 && (
+        <form onSubmit={handleSave} className={playliststyles.playlistNameCtn}>
           <input
             className={playliststyles.playlistInput}
             type="text"
-            name="playlist"
-            id="userPlaylist"
-            placeholder="Playlist name"
-            // value={playlistName}
+            value={playlistName}
             onChange={({ target }) => setPlaylistName(target.value)}
-            onSubmit={handleNameClick}
+            placeholder={isEditing ? "Enter playlist name" : ""}
+            readOnly={!isEditing}
+            onClick={handleEdit} // Click to edit when in display mode
+            style={{
+              textAlign: isEditing ? "left" : "center",
+              cursor: isEditing ? "text" : "pointer",
+              backgroundColor: isEditing ? "#ddb6f6" : "#5a4e67",
+            }}
           />
-          <CiSaveUp2
-            className={playliststyles.playlistSave}
-            onClick={handleNameClick}
-          />
+
+          {isEditing && (
+            <CiSaveUp2
+              className={playliststyles.playlistSave}
+              onClick={handleSave}
+            />
+          )}
         </form>
-      )}
-      {!displayPlaylistName ? (
-        ""
-      ) : (
-        <input
-          id="userPlaylistName"
-          type="text"
-          value={playlistName}
-          className={playliststyles.playlistInput}
-          style={{ display: "", textAlign: "center" }}
-        />
       )}
       <ul>
         {playlist.map((song, index) => {

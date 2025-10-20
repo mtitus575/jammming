@@ -16,8 +16,7 @@
   justify-self: center;
 }
 
-.srchInput,
-.playlistInput {
+.srchInput {
   width: 90%;
   border: none;
   outline: none;

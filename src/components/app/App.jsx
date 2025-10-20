@@ -29,7 +29,7 @@ import { KEYS } from "../../../private";
 function App() {
   //State:
   const [login, setLogin] = useState(true);
-  const [musicData, setMusicData] = useState(SIMPLE_DATA);
+  const [musicData, setMusicData] = useState([]);
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [apiToken, setApiToken] = useState("");
